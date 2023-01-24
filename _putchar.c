@@ -1,30 +1,14 @@
 #include <unistd.h>
+#include "main.h"
 
 /**
- * _putchar - print char with stdout
- * @ch: char to print
- * Return: output
+ * _putchar - writes the char c to stdout
+ * @c: the character to print
+ *
+ * Return: on success 1
+ * on error -1 is returned, errno is set appropriately
  */
-int _putchar(char ch)
+int _putchar(char c)
 {
-	static int contador;
-	static char buffer[1024];
-
-	if (ch == -1)
-	{
-		contador = 0;
-		return (0);
-	}
-	if (ch == -2 || contador == 1024)
-	{
-		write(1, buffer, contador);
-		contador = 0;
-	}
-	if (ch != -1 && ch != -2)
-	{
-		buffer[contador] = ch;
-		contador++;
-		return (1);
-	}
-	return (0);
+	return (write(1, &c, 1));
 }
